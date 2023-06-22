@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/add_note_bottom_sheet.dart';
 import 'widgets/custom_note_appbar.dart';
 import 'widgets/cutom_note_body.dart';
 
@@ -14,6 +15,9 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16)
+            ),
               context: context,
               builder: (context) {
                 return const AddNoteBottomSheet();
@@ -26,20 +30,3 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class AddNoteBottomSheet extends StatelessWidget {
-  const AddNoteBottomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(16), topRight: Radius.circular(16)),
-        color: Colors.grey[800],
-      ),
-      child: Column(children: [
-        
-      ]),
-    );
-  }
-}
