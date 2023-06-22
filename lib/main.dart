@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.grey[800],
         fontFamily: "Poppins",
         textTheme:const TextTheme(
           titleLarge: TextStyle(
