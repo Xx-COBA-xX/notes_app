@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:my_to_do_app/constant/color.dart';
+import 'package:my_to_do_app/data/model/notes/notes_model.dart';
 
 import 'constant/constant.dart';
 import 'screen/splash_screen/spash_screen.dart';
 
 void main() async {
   await Hive.initFlutter();
+  Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox(kNoteBox);
   runApp(const MyApp());
 }

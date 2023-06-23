@@ -9,22 +9,24 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomNoteApp(),
-      body: const CustomNotesBody(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16)
-            ),
-              context: context,
-              builder: (context) {
-                return const AddNoteBottomSheet();
-              });
-        },
-        backgroundColor: Colors.grey[600],
-        child: const Icon(Icons.add),
+    return SafeArea(
+      child: Scaffold(
+        appBar: const CustomNoteApp(icon: Icons.search,title: "Notes"),
+        body: const CustomNotesBody(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            showModalBottomSheet(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16)
+              ),
+                context: context,
+                builder: (context) {
+                  return  const AddNoteBottomSheet();
+                });
+          },
+          backgroundColor: Colors.grey[600],
+          child: const Icon(Icons.add),
+        ),
       ),
     );
   }
