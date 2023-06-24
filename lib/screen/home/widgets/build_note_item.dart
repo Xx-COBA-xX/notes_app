@@ -1,9 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class BuildNoteItem extends StatelessWidget {
-  const BuildNoteItem({super.key});
+import 'package:my_to_do_app/data/model/notes/notes_model.dart';
 
+class BuildNoteItem extends StatelessWidget {
+  const BuildNoteItem({
+    Key? key,
+    required this.note,
+  }) : super(key: key);
+
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,15 +23,14 @@ class BuildNoteItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(top: 12, left: 12, bottom: 14),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: const Color.fromARGB(255, 235, 217, 165)),
+            borderRadius: BorderRadius.circular(16), color: Color(note.color)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-                title: const Text(
-                  "Flutter Tips",
-                  style: TextStyle(
+                title: Text(
+                  note.title,
+                  style: const TextStyle(
                     fontSize: 24,
                     color: Colors.black,
                   ),
@@ -32,7 +38,7 @@ class BuildNoteItem extends StatelessWidget {
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Text(
-                    "Build Creaitiv app with Haider",
+                    note.subTitle,
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black.withOpacity(.4),
@@ -40,13 +46,15 @@ class BuildNoteItem extends StatelessWidget {
                   ),
                 ),
                 trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    note.delete();
+                  },
                   icon: const Icon(CupertinoIcons.delete),
                 )),
             Padding(
               padding: const EdgeInsets.only(right: 40),
               child: Text(
-                "May 21, 2023",
+                note.date,
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.black.withOpacity(.5),

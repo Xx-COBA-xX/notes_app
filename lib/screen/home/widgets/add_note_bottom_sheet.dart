@@ -11,29 +11,34 @@ class AddNoteBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddNoteCubit, AddNoteState>(
-      listener: (context, state) {
-        if (state is AddNoteFaliuer) {
-          print("Fieled is ${state.errMasage}");
-        }
-        if (state is AddNoteLoadded) {
-          Navigator.pop(context);
-        }
-      },
-      builder: (context, state) {
-        return AbsorbPointer(
-          absorbing: state is AddNoteLoading ? true : false,
-          child: Container(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom, left: 20, right: 20),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Colors.grey[800],
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: BlocConsumer<AddNoteCubit, AddNoteState>(
+        listener: (context, state) {
+          if (state is AddNoteFaliuer) {
+            print("Fieled is ${state.errMasage}");
+          }
+          if (state is AddNoteLoadded) {
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          return AbsorbPointer(
+            absorbing: state is AddNoteLoading ? true : false,
+            child: Container(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom,
+                  left: 20,
+                  right: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Colors.grey[800],
+              ),
+              child: const SingleChildScrollView(child: BuildForm()),
             ),
-            child: const SingleChildScrollView(child: BuildForm()),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
