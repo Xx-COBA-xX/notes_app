@@ -67,7 +67,7 @@ class _OnBoradingScreenState extends State<OnBoradingScreen>
                           flex: 2,
                           child: Container(
                             child: Lottie.asset(
-                             _onBoradingInfo[index].image,
+                              _onBoradingInfo[index].image,
                               height: 350,
                               width: 350,
                             ),
@@ -124,7 +124,10 @@ class _OnBoradingScreenState extends State<OnBoradingScreen>
                               fontSize: 20,
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(const HomeScreen(),
+                                transition: Transition.fadeIn);
+                          },
                         ),
                       ],
                     ),
@@ -179,16 +182,15 @@ class _OnBoradingScreenState extends State<OnBoradingScreen>
   Widget _buildAnimatedContainer(int index) {
     return AnimatedContainer(
       padding: const EdgeInsets.only(right: 4),
-      duration: const Duration(milliseconds: 400),
-      curve: Curves.linear,
-      child: Container(
-        decoration: BoxDecoration(
-          color: index == currentPage ? kPrimaryColor : Colors.black38,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        height: 10,
-        width: index == currentPage ? 24 : 10,
+      margin: const EdgeInsets.only(right: 4),
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeInOut,
+      decoration: BoxDecoration(
+        color: index == currentPage ? kPrimaryColor : Colors.black38,
+        borderRadius: BorderRadius.circular(8),
       ),
+      height: 10,
+      width: index == currentPage ? 24 : 10,
     );
   }
 }

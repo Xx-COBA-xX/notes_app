@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_to_do_app/constant/color.dart';
 
 class BuildTextFormField extends StatelessWidget {
   const BuildTextFormField(
@@ -28,6 +29,8 @@ class BuildTextFormField extends StatelessWidget {
           color: Colors.white54,
         ),
       ),
+      cursorColor: kPrimaryColor,
+      cursorRadius: const Radius.circular(8),
       style: const TextStyle(
         fontSize: 16,
         color: Colors.white70,
